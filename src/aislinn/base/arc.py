@@ -38,8 +38,9 @@ class Arc:
     def label(self):
         if not self.events and not self.data:
             return "no-events"
-        pids = list(set(e.pid for e in self.events if hasattr(e, "pid")))
-        l = ",".join(map(str, pids))
+        #pids = list(set(e.pid for e in self.events if hasattr(e, "pid")))
+        #l = ",".join(map(str, pids))
+        l = "\n".join("{}`{}".format(e.pid, e.name) for e in self.events if hasattr(e, "pid"))
         if self.data:
             l += "+d"
         return l
